@@ -25,7 +25,7 @@ En esta sesión revisamos:
 ### Ejercicios realizados
 
 * [Ejercicio 1](https://thimbleprojects.org/badillosoft/89031): se creó un menú de navegación y controles de un formulario utilizando `pseudoclases` y `flexbox`
-* [Ejercicio 2](https://thimbleprojects.org/badillosoft/89039): se creó una lista de elementos utilizando `counters`, la propiedad `content` y `pseudoclases`
+* [Ejercicio 2](https://thimbleprojects.org/badillosoft/89039): se creó una lista de elementos utilizando `counters`, la propiedad `content`, `pseudoclases` y los `data-attributes`
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/89080): se creó una targeta de presentación utilizando `box-shadow`, `border-radius`, `display: block`, `display: inline-block`, `microdatos` y `microformatos`
 * [Ejercicio 4](https://thimbleprojects.org/badillosoft/89097): se creó un script que muestra el uso de variables y funciones en _javascript_
 * [Ejercicio 5](https://thimbleprojects.org/badillosoft/89171): se creó una caja de bienvenida en _css_ que se muestra al cargar la ventana sobrecargando el delegado `window.onload` y transcurridos 2 segundos `setTimeout(function () { div.style.display = "block"; }, 2000);`
