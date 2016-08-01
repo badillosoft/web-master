@@ -29,3 +29,10 @@ En esta sesión revisamos:
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/89080): se creó una targeta de presentación utilizando `box-shadow`, `border-radius`, `display: block`, `display: inline-block`, `microdatos` y `microformatos`
 * [Ejercicio 4](https://thimbleprojects.org/badillosoft/89097): se creó un script que muestra el uso de variables y funciones en _javascript_
 * [Ejercicio 5](https://thimbleprojects.org/badillosoft/89171): se creó una caja de bienvenida en _css_ que se muestra al cargar la ventana sobrecargando el delegado `window.onload` y transcurridos 2 segundos `setTimeout(function () { div.style.display = "block"; }, 2000);`
+
+## Sesión 2
+
+* Calculadora: uso de las técnicas de diseño y programación aprendidas.
+* Sistema de rejilla: consiste en dividir la pantalla en 12 columnas y definir 12 clases `col-1, col-2, ..., col-12` para combinarlas y sumar 12 para obtener el 100% de la pantalla.
+* Instalar una fuente de letra extenrna: mediante el decorador `@fontface` se integra un archivo que define una letra en nuestra página. `@font-face { font-family: lucida; src: url(lucon.ttf); }` para utilizar la fuente tenemos `selector { font-family: lucida }` donde `lucida` es el nombre que queremos darle a la fuente y `lucon.ttf` es el archivo de la fuente.
+* Definir una funcionalidad usando los eventos `on`: desde la etiqueta _html_ podemos definir la funcionalidad de un elemento especificando los atributos `on`, por ejemplo `<button onclick="saludar()">` y en el _script_ definimos la funciòn `saludar`, `<script>function saludar() { alert("Hola mundo"); }</script>` también podemos pasar argumentos: `<button onclick="saludar('Hola')">` y en el _script_ definimos la funciòn `saludar`, `<script>function saludar(mensaje) { alert(mensaje); }</script>`.
