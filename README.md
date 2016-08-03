@@ -58,3 +58,5 @@ En esta sesión revisamos:
 * [Ejercicio 1](https://thimbleprojects.org/badillosoft/90132): se creó una aplicación que recuperar valores guardados localmente y por sesión.
 * [Ejercicio 2](https://thimbleprojects.org/badillosoft/90138): se creó una aplicación que muestra un formulario para ingresar usuarios aplicando los conceptos de almacenamiento, consumo de webservices y transiciones. El formulario valida usuarios generados por https://randomuser.me/api.
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que muestra diferentes animaciones que se pueden construir en _css_.
+
+https://api.mlab.com/api/1/databases/badillosoft/collections/places?apiKey=ayRRQWTsfrXOpE8za6m5FlXBXXPytqSf
