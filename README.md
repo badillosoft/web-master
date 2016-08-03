@@ -45,3 +45,16 @@ En esta sesión revisamos:
 * [Ejercicio 1](https://thimbleprojects.org/badillosoft/89363): se creó una calculadora funcional aplicando el diseño de la calculadora de _osx_
 * [Ejercicio 2](https://thimbleprojects.org/badillosoft/90071): se creó consumió el servicio web de https://randomuser.me/api mediante una petición `ajax`
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/89402): se creó un menú lateral con efecto de transición y un logo utilizando transformaciones
+
+## Sesión 3
+
+* Alamcenamiento local: consiste en guardar datos en el navegador mediante `localStorage` y `sessionStorage` los cuales permiten almacenar cadenas asociadas a una clave. El almacenamiento local significa almacenamiento persistente que podrá recuperarse tras cerrar el navegador al menos que se borren todos los datos de navegación del sitio. El almacenamiento por sesión persistirá mientras el navegador este abierto. Si queremos guardar un valor debemos utilizar `localStorage.setItem("mi_clave", "mi valor")` o `sessionStorage.setItem("mi_clave", "mi valor")`. Para recuperar un valor hacemos `localStorage.getItem("mi_clave")` o `sessionStorage.getItem("mi_clave")`. Adicionalmente podemos eliminar un valor con `localStorage.removeItem("mi_clave")` o `sessionStorage.removeItem("mi_clave")`.
+* Media Querys: en _css_ podemos definir un estilo completo o parcial para cuando ocurren ciertas reglas en el dispositivo como en la pantalla `screen` o en la impresora `printer`. Así por ejemplo podemos aplicar un diseño cuando ocurre un máximo o mínimo de tamaño de pantalla u orientación, ejemplo `@media screen and (max-width: 600px) and (min-width: 300px) { body { background-color: red; } }` establece un fondo de pantalla rojo cuando la pantalla tiene un mínimo de `300px` y un máximo de `600px`.
+* La función `calc`: esta función en _css_ nos permite hacer un calculo entre porcentajes y pixeles u otras unidades, ejemplo `left: calc(50% - 150px)` empuja un elemento al 50% de la pantalla y le quita `150px`, si el elemento mide de ancho `300px` este quedará centrado.
+* Animaciones: en _css_ podemos hacer animaciones en distintas propiedades utilizando los `kyframes` que son los estados que componen al diseño. Podemos hacer animaciones `from-to` donde especificamos un estado inicial y uno final o porcentajes de `0%% a 100%` donde especificamos el estado en cada porción de la animación, ejemplo `@keyframes giro { from { transform: rotate(0deg); } to { transform: rotate(90deg); } }` la cual define una animación que transforma un elemento y lo rota 90 grados. Para aplicar la animación hacemos `selector { animation-name: giro; animation-duration: 2s; }` puedes revisar otras opciones en http://www.w3schools.com/css/css3_animations.asp
+
+### Ejercicios realizados
+
+* [Ejercicio 1](https://thimbleprojects.org/badillosoft/90132): se creó una aplicación que recuperar valores guardados localmente y por sesión.
+* [Ejercicio 2](https://thimbleprojects.org/badillosoft/90138): se creó una aplicación que muestra un formulario para ingresar usuarios aplicando los conceptos de almacenamiento, consumo de webservices y transiciones. El formulario valida usuarios generados por https://randomuser.me/api.
+* [Ejercicio 3](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que muestra diferentes animaciones que se pueden construir en _css_.
