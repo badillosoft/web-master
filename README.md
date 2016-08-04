@@ -62,3 +62,4 @@ En esta sesión revisamos:
 https://api.mlab.com/api/1/databases/badillosoft/collections/places?apiKey=ayRRQWTsfrXOpE8za6m5FlXBXXPytqSf
 
 Flip Book en Canvas: https://dl.dropboxusercontent.com/u/7235888/jpageflipper/index.html
+http://www.20thingsilearned.com/es-ES/home
