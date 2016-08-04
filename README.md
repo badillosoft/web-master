@@ -60,3 +60,5 @@ En esta sesión revisamos:
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que muestra diferentes animaciones que se pueden construir en _css_.
 
 https://api.mlab.com/api/1/databases/badillosoft/collections/places?apiKey=ayRRQWTsfrXOpE8za6m5FlXBXXPytqSf
+
+Flip Book en Canvas: https://dl.dropboxusercontent.com/u/7235888/jpageflipper/index.html
