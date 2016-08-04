@@ -59,6 +59,90 @@ En esta sesión revisamos:
 * [Ejercicio 2](https://thimbleprojects.org/badillosoft/90138): se creó una aplicación que muestra un formulario para ingresar usuarios aplicando los conceptos de almacenamiento, consumo de webservices y transiciones. El formulario valida usuarios generados por https://randomuser.me/api.
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que muestra diferentes animaciones que se pueden construir en _css_.
 
+## Sesión 4
+
+* Mapas de Google: la _API_ permite mostrar mapas en la aplicación. Necesitamos un contenedor `div` donde mostrar el mapa, luego creamos un objeto llamado mapa como en la siguiente receta:
+
+> __JS__ - Crear un objeto mapa
+
+~~~js
+var map = null;
+
+function initialize() {
+	var properties = {
+		center: new google.maps.LatLng("19.1234", "-99.1234"),
+		zoom: 16
+		mapType: google.maps.MapType.ROADMAP
+	};
+	
+	var box_map = document.getElementById("box_map");
+	
+	map = new google.maps.Map(box_map, properties);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize());
+~~~
+
+> __JS__ - Centrar el mapa a una posición
+
+~~~js
+var position = new google.maps.LatLng("19.1234", "-99.1234");
+
+map.setCenter(position);
+~~~
+
+> __JS__ - Poner un marcador en el mapa
+
+~~~js
+var position = new google.maps.LatLng("19.1234", "-99.1234");
+
+var marker = new google.maps.Marker({
+	position: position
+});
+
+marker.setMap(map);
+~~~
+
+> __JS__ - Mostrar una ventana de información en el marcador cuando se pulsa click
+
+~~~js
+var info = new google.maps.InfoWindow({
+	content: "<strong>Hola mundo</strong>"
+});
+
+google.maps.event.addListener(marker, 'click', function () {
+	info.open(map, marker);
+});
+~~~
+
+* Elementos dinámicos: son elementos _html_ que podemos generar desde _javascript_. Para generar un elemento dinámico utilizamos la función `document.createElement("type")` donde `type` es el tipo de elemento que queremos crear, ejemplo suponiendo que existe `<div id="mi_div"></div>`, si queremos insertar una imagen dentro del `div` seguimos la siguiente receta
+
+> __JS__ - Insertar una imagen dinámicamente en `mi_div`
+
+~~~js
+// Recuperamos el elemento `div` con id `mi_div`
+var mi_div = document.getElementById("mi_div");
+
+// Creamos un elemento de tipo `img`
+var img = document.createElement("img");
+
+// Ajustamos el atributo `src`
+img.src = "cat.png";
+// Ajustamos el atributo `data-author`
+img.dataset.author = "badillosoft";
+// Ajustamos el estilo
+img.style.borderRadius = "50%";
+
+// Insertamos el elemento dinámico `img` en el `div`
+mi_div.appendChild(img);
+~~~
+
+### Ejercicios realizados
+
+* [Ejercicio 1](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que activa un panel mediante un enlace y la ``pseudo-clase` de _css_ `:target`.
+* [Ejercicio 2](https://thimbleprojects.org/badillosoft/90132): se creó una aplicación que muestra un mapa centrado en el zócalo de la ciudad de méxico con un menú que muestra 3 lugares a los que se puede centrar el mapa.
+* [Ejercicio 3](https://thimbleprojects.org/badillosoft/90138): se creó una aplicación derivada del `Ejercicio 1` la cual consume un servicio web que provee los lugares, su descripción y una imagen.
+
 https://api.mlab.com/api/1/databases/badillosoft/collections/places?apiKey=ayRRQWTsfrXOpE8za6m5FlXBXXPytqSf
 
 Flip Book en Canvas: https://dl.dropboxusercontent.com/u/7235888/jpageflipper/index.html
