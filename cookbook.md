@@ -16,8 +16,8 @@ Por Alan Badillo Salas [ badillo.soft@hotmail.com | https://twitter.com/badillos
 
 1. Guardar un valor
 2. Recuperar un valor guardado
-3. Recordar los datos de un formulario
-4. Sincronizar un objeto de configuración
+3. Sincronizar un objeto de configuración
+4. Recordar los datos de un formulario
 
 ### Parte III - Geolocalización
 
@@ -316,4 +316,139 @@ $.ajax({
 });
 
 ...
+~~~
+
+## Parte II - Almacenamiento
+
+### Guardar un valor
+
+> __JS__ - Guardar un valor local y por sesión
+
+~~~js
+localStorage.setItem("mi_clave", "mi_valor");
+sessionStorage.setItem("mi_clave", "mi_valor");
+~~~
+
+### Recuperar un valor guardado
+
+> __JS__ - Recuperar un valor local y por sesión
+
+~~~js
+var mi_valor = localStorage.getItem("mi_clave");
+var mi_valor = sessionStorage.getItem("mi_clave");
+~~~
+
+### Sincronizar un objeto de configuración
+
+Para guardar un objeto complejo lo convertiremos en una cadena de texto con el formato _json_ mediante `JSON.stringify(obj)`, para recuperar el objeto desde una cadena _json_ usaremos `JSON.parse(cad)` este procedimiento se conoce como serialización y deserialización respectivamente.
+
+Primero definimos nuestro objeto de configuración
+
+> __JS__ - Objeto de configuración
+
+~~~js
+var conf = {
+  recordar: false
+};
+~~~
+
+Serializamos el objeto para guardarlo
+
+> __JS__ - Guardar un objeto de configuración
+
+~~~js
+localStorage.setItem("config", JSON.stringify(conf));
+~~~
+
+Deserializamos el objeto recuperado para obtener la configuración
+
+> __JS__ - Recuperar un objeto de configuración
+
+~~~js
+var conf = localStorage.getItem("config");
+
+console.log(conf.recordar);
+~~~
+
+### Recordar los datos de un formulario
+
+Creamos los un formulario
+
+> __HTML__ - Formulario HTML con usuario y contraseña
+
+~~~html
+<label for="txt_usuario">Usuario:</label>
+<input id="txt_usuario" placeholder="Usuario" >
+<label for="txt_clave">Contraseña:</label>
+<input id="txt_clave" type="password" placeholder="Contraseña" >
+<input id="chk_recordar" type="checkbox" onchage="sincronizar()" checked >
+<label for="chk_recordar">Recordar</label>
+~~~
+
+Recuperamos los elementos en _javascript_ mediante su _id_
+
+> __JS__ - Recuperar los elementos
+
+~~~js
+var txt_usuario = null, txt_clave = null, chk_recordar = null;
+
+window.onload = function() {
+  txt_usuario = document.getElementById("txt_usuario");
+  txt_clave = document.getElementById("txt_clave");
+  chk_recordar = document.getElementById("chk_recordar");
+};
+~~~
+
+Recuperamos el valor guardado del `checkbox` para determinar si el usuario quizó guardar los datos
+
+> __JS__ - Recuperar los elementos
+
+~~~js
+var txt_usuario = null, txt_clave = null, chk_recordar = null, config = { recordar: false, usuario: "", clave: "" };
+
+window.onload = function() {
+  txt_usuario = document.getElementById("txt_usuario");
+  txt_clave = document.getElementById("txt_clave");
+  chk_recordar = document.getElementById("chk_recordar");
+  
+  // Recuperamos la configuración guardada (si existe)
+  var saved_config = localStorage.getItem("config");
+  
+  // Si hay una configuración previa
+  if (saved_config) {
+    // Reemplazamos el objeto de configuración [ver II.3]
+    config = JSON.parse(saved_config);
+  } else {
+    // Sino, guardamos el objeto de configuración por defecto creado arriba
+    localStorage.setItem("config", JSOSN.stringify(config));
+  }
+  
+  // Ajustamos los valores de las cajas según la configuración
+  txt_usuario.value = config.usuario;
+  txt_clave.value = config.clave;
+};
+~~~
+
+Sincronizamos el checkbox con el objeto de configuración
+
+> __JS__ - Sincronizar el objeto de configuración
+
+~~~js
+// Definimos la función que sincroniza la configuración
+function sincronizar() {
+  // Ajustamos los valores de configuración según los valores de los controles
+  config.recuperar = chk_recuperar.checked;
+  
+  if (config.recuperar) {
+    // En modo recuperar la configuración guarda los valores de usuario y contraseña
+    config.usuario = txt_usuario.value;
+    config.clave = txt_clave.value;
+  } else {
+    // Sino, borramos los datos almacenados en usuario y contraseña
+    config.usuario = "";
+    config.clave = "";
+  }
+  
+  localStorage.setItem("config", JSOSN.stringify(config));
+}
 ~~~
