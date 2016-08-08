@@ -199,6 +199,84 @@ function saludar() {
 
 ## 4. Mostrar un menú de alerta personalizado
 
+Para crear un mensaje de alerta utilizaremos _css_ y algunas etiquetas que contengan los datos:
 
+> __HMTL__ - Estructura de la caja de alerta
+
+~~~html
+<div id="box_all" class="box-all" onclick="hideAlert()">
+  <div id="box_alert" class="box-alert">
+    <h1>Usuario no válido</h1>
+    <p>El usuario o la contraseña es incorrecta</p>
+  </div>
+</div>
+~~~
+
+Aplicamos el siguiente diseño para la caja:
+
+> __CSS__ - Diseño de la caja de alerta
+
+~~~css
+.box-all {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 1s;
+}
+
+.box-alert {
+  position: absolute;
+  top: -200px;
+  transition: top 1s;
+  left: calc(50% - 150px);
+  width: 300px;
+  padding: 30px;
+  margin: auto;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px rgba(255, 0, 0, 0.4);
+  color: #666;
+}
+
+.box-alert h1 {
+  font-size: 1.1em;
+}
+
+.box-alert p {
+  font-size: 0.8em;
+  text-align: left;
+  margin-top: 20px;
+}
+~~~
+
+Finalmente programamos la funcionalidad para esconder y mostrar:
+
+> __JS__ - Mostrar la caja de alerta
+
+~~~js
+var box_all = document.getElementById("box_all");
+var box_alert = document.getElementById("box_alert");
+
+box_alert.style.top = "0px";
+box_all.style.height = "100%";
+box_all.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+~~~
+> __JS__ - Ocultar la caja de alerta
+
+~~~js
+var box_all = document.getElementById("box_all");
+var box_alert = document.getElementById("box_alert");
+
+box_alert.style.top = "-200px";
+//box_all.style.height = "0%";
+box_all.style.backgroundColor = "rgba(0, 0, 0, 0)";
+
+setTimeout(function () {
+  box_all.style.display = "none";
+}, 1000);
+~~~
 
 ## 5. Consumir un servicio web en _json_
