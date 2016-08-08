@@ -142,6 +142,84 @@ mi_div.appendChild(img);
 * [Ejercicio 1](https://thimbleprojects.org/badillosoft/90241): se creó una aplicación que activa un panel mediante un enlace y la ``pseudo-clase` de _css_ `:target`.
 * [Ejercicio 2](https://thimbleprojects.org/badillosoft/90132): se creó una aplicación que muestra un mapa centrado en el zócalo de la ciudad de méxico con un menú que muestra 3 lugares a los que se puede centrar el mapa.
 * [Ejercicio 3](https://thimbleprojects.org/badillosoft/90138): se creó una aplicación derivada del `Ejercicio 1` la cual consume un servicio web que provee los lugares, su descripción y una imagen.
+* [Ejercicio 4](https://thimbleprojects.org/badillosoft/90427): se creó una aplicación que utiliza el _web api_ `navigator.onLine` para determinar si la aplicación tiene acceso a internet.
+
+## Sesión 5
+
+* Canvas: la nueva etiqueta `<canvas>` introducida en _html 5_ permite dibujar y hacer animaciones más complejas que en _css_. Para utilizar _canvas_ debemos recuperar el contexto 2d de la etiqueta y ajustar algunos métodos para dibujar y actualizar las variables de control como se muestra en la siguiente receta:
+
+> __JS__ - Plantilla para usar canvas
+
+~~~js
+var canvas = null, ctx = null;
+    
+// Cargamos los eventos `load` y `resize` de `window`
+window.addEventListener("load", initialize);
+window.addEventListener("resize", resize);
+
+// Inicializa el objeto canvas y el contexto, invoca los loops para actualizar y dibujar
+function initialize () {
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext("2d");
+
+	resize();
+	update();
+	draw();
+};
+
+// Si la ventana es redimensionada mantiene la misma resolución
+function resize() {
+	var aspect = window.innerWidth / window.innerHeight, resolution = 300;
+	canvas.width = resolution;
+	canvas.height = resolution / aspect;
+}
+
+// Colocamos las variables de control
+var x = 0;
+
+// Actualizamos las variables de control
+function update() {
+	x += 1;
+	
+	// Creamos el loop para actualizar cada 60 fps aproximadamente
+	requestAnimationFrame(update);
+}
+
+// Dibujamos objetos usando o no las variables de control
+function draw() {
+	// Borramos toda la pantalla
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	Creamos un gradiente usando la variable de control
+	var grd = ctx.createLinearGradient(x, 20, x + 50, 20);
+
+	// Agregamos colores al gradiente
+	grd.addColorStop(0, "#f00");
+	grd.addColorStop(1, "#00f");
+
+	// Ajustamos el color de relleno al gradiente
+	ctx.fillStyle = grd;
+	// Dibujamos un rectángulo relleno (será el gradiente su relleno)
+	ctx.fillRect(x, y, 50, 50);
+
+	// Ajustamos el color de contorno a salmón
+	ctx.strokeStyle = "rgb(255, 84, 84)";
+	// Dibujamos el contorno de un rectángulo
+	ctx.strokeRect(40, 80, 50, 50);
+
+	// Creamos el loop para dibujar cada 60 fps aproximadamente
+	requestAnimationFrame(draw);
+}
+~~~
+
+* JQuery: es una librería para _javascript_ la cual facilita seleccionar elementos _html_, ejemplo, `$("h1")` selecciona todos los elementos `h1` e implementa funcionalidad sobre ellos, ejemplo `$("h1").css("color", "red")` cambia el color de funte a rojo para todos los elementos seleccionados. `$(".active").hide()` oculta todos los elementos con la clase `active` y `$(".active").show()` los muestra. También existen los métodos `fadeIn`, `fadeOut`, `slideUp`, `slideDown` entre otros. Los métodos `on("event", function () { ... })` invocan a la función cuando ocurre el evento `event`, ejemplo, `$("#my_btn").on("click", function () { alert("Hola mundo"); })` muestra una alerta con el texto `hola mundo` cuando ocurre el evento `onclick` sobre el botón con id _my_btn_. También podemos crear elementos dinámicos insertando etiquetas dentro del selector, ejemplo, `var btn = $("<button>Hola</button>")` e insertarlas en otros elementos `$("body").append(btn)` o `btn.appendTo($("body"))`.
+* JQuery Mobile: es una librería extendida para integrar proyectos en diversos dispositivos móviles haciendo que el diseño se adapte. Puede encontrar algunos demos para armar un proyecto en http://demos.jquerymobile.com/1.4.5/
+
+### Ejercicios realizados
+
+* [Ejercicio 1](https://thimbleprojects.org/badillosoft/90444): se creó una aplicación que muestra un rectángulo con gradiente rebotando en _canvas_.
+* [Ejercicio 2](https://thimbleprojects.org/badillosoft/91059): se creó una aplicación que muestra los beneficios de utilizar _jquery_.
+* [Ejercicio 3](https://thimbleprojects.org/badillosoft/90482): se creó una aplicación que introduce algunos conceptos de _jquery mobile_.
 
 https://api.mlab.com/api/1/databases/badillosoft/collections/places?apiKey=ayRRQWTsfrXOpE8za6m5FlXBXXPytqSf
 
