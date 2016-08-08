@@ -280,3 +280,40 @@ setTimeout(function () {
 ~~~
 
 ## 5. Consumir un servicio web en _json_
+
+Para consumir un servicio web en _json_ es necesario comprobar que este funcionando correctamente, por ejemplo, pruebe la _api_ libre de https://randomuser.me/. Una vez que la url funciona y nos devuelve objetos _json_ la integramos mediante jquery:
+
+> __HTML__ - Integrar _jquery_ a la aplicación
+
+~~~html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    ...
+  </head>
+  ...
+</html>
+~~~
+
+Posteriormente cada que queramos recuperar los datos realizamos una petición _ajax_:
+
+> __JS__ - Petición _ajax_
+
+~~~js
+...
+
+$.ajax({
+  url: "https://randomuser.me/api", // URL del servicio web
+  dataType: "json", // Tipo de respuesta del servicio web
+  success: function (data) { // Función que procesa los datos devueltos por el servidor
+    console.log(data); // Procesamos aquí los datos, podemos llamar a otra función si queremos
+  },
+  error: function (err) { // Función que procesa cualquier error durante la petición _ajax_
+    console.log("Hubo un error al obtener los datos", err); // Procesamos aquí el error
+  }
+});
+
+...
+~~~
