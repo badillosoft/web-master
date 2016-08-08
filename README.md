@@ -190,7 +190,7 @@ function draw() {
 	// Borramos toda la pantalla
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	
-	Creamos un gradiente usando la variable de control
+	// Creamos un gradiente usando la variable de control
 	var grd = ctx.createLinearGradient(x, 20, x + 50, 20);
 
 	// Agregamos colores al gradiente
