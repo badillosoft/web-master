@@ -457,13 +457,127 @@ function sincronizar() {
 
 ### Obtener las coordenadas de geolocalización
 
+Obtendremos las coordenadas mediante el _web api_ `navigator.geolocation` como se describe en https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
+
+> __JS__ - Obtener las coordenadas de geolocalización
+
+~~~js
+navigator.geolocation.getCurrentPosition(function(position) {
+  console.log(position.coords.latitude, position.coords.longitude);
+});
+~~~
+
 ### Mostrar un mapa con las coordenadas específicas
+
+Usaremos los mapas de _google_ como se describe en http://www.w3schools.com/googleapi/default.asp
+
+> __HTML__ - Ajustar la región del mapa
+
+~~~html
+<div id="box_map"></div>
+~~~
+
+> __CSS__ - Ajustar el diseño de la región del mapa
+
+~~~css
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+#box_map {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+}
+~~~
+
+> __JS__ - Construir el objeto `map`
+
+~~~js
+var map = null;
+
+google.maps.event.addDomListener(window, "load", initialize);
+
+function initialize () {
+  
+  var properties = {
+    center: new google.maps.LatLng("19.434353", "-99.130010"),
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true
+  };
+  
+  map = new google.maps.Map(document.getElementById("box_map"), properties);
+}
+~~~
 
 ### Mostrar un mapa con las coordenas del usuario
 
+> __JS__ - Centrar el mapa en las coordenadas del usuario
+
+~~~js
+navigator.geolocation.getCurrentPosition(function(user_position) {
+  var position = new google.maps.LatLng(user_position.coords.latitude, user_position.coords.longitude);
+  map.setCenter(position);
+});
+~~~
+
 ### Añadir un pin al mapa y guardarlo
 
+> __JS__ - Poner un marcador en el mapa
+
+~~~js
+var position = new google.maps.LatLng("19.1234", "-99.1234");
+
+var marker = new google.maps.Marker({
+	position: position
+});
+
+marker.setMap(map);
+~~~
+
+> __JS__ - Mostrar una ventana de información en el marcador cuando se pulsa click
+
+~~~js
+var info = new google.maps.InfoWindow({
+	content: "<strong>Hola mundo</strong>"
+});
+
+google.maps.event.addListener(marker, 'click', function () {
+	info.open(map, marker);
+});
+~~~
+
+> __JS__ - Guardar los datos de un marcador
+
+~~~js
+var position = {
+  lat: "19.1234",
+  lng: "99.1234"
+};
+
+localStorage.setItem("mi_pin", JSON.srtingify(position));
+~~~
+
 ### Ir a un pin guardado
+
+> __JS__ - Recuperar los datos de un marcador
+
+~~~js
+var position = JSON.parse(localStorage.getItem("mi_pin"));
+
+var marker = new google.maps.Marker({
+	position: new google.maps.LatLng(position.lat, position.lng);
+});
+
+marker.setMap(map);
+~~~
 
 ## Parte IV - Canvas
 
