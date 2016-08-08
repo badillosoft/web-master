@@ -452,3 +452,15 @@ function sincronizar() {
   localStorage.setItem("config", JSOSN.stringify(config));
 }
 ~~~
+
+## Parte III - Geolocalización
+
+### Obtener las coordenadas de geolocalización
+
+### Mostrar un mapa con las coordenadas específicas
+
+### Mostrar un mapa con las coordenas del usuario
+
+### Añadir un pin al mapa y guardarlo
+
+### Ir a un pin guardado
