@@ -713,9 +713,77 @@ function draw() {
 
 ### Dibujar una función
 
+Para dibujar una función calculamos un arreglo de puntos secuenciales que representan la función, cada punto es un objeto compuesto de una `x` y una `y`.
+
+> __JS__ - Crear un arreglo de puntos basados en una función
+
+~~~js
+var points = [];
+
+for (var x = -10; x <= 10; x += 0.5) {
+	var y = 100 * Math.sin(x);
+	
+	points.push({ x: x, y: y });
+}
+~~~
+
+> __JS__ - Dibujar un arreglo de puntos basados en una función
+
+~~~js
+var dx = 100, dy = 100, ex = 1, ey = 1;
+
+ctx.beginPath();
+
+var initialPoint = points[0];
+
+ctx.moveTo(initialPoint.x, initialPoint.y);
+
+points.forEach(function (point) {
+	ctx.lineTo(ex * (point.x - dx), ey * (point.y - dy));
+});
+
+ctx.closePath();
+
+ctx.stroke();
+~~~
+
+Observe que las variables `dx`, `dy` fueron introducidas para centrar la función en el punto `(dx, dy)` y los valores `ex`, `ey` fueron introducidas para escalar la función, si lo desea puede eliminarlas y dejar sólo `ctx.lineTo(point.x, point.y);`
+
 ### Almacenar un dibujo
 
+Para almacenar un dibujo o función basta con serializar y deserializar el arreglo de puntos.
+
+> __JS__ - Almacenar un dibujo
+
+~~~js
+var points = [];
+
+...
+
+localStorage.setItem("points", JSON.stringify(points));
+~~~
+
 ### Dibujar un dibujo almacenado
+
+> __JS__ - Dibujar un dibujo almacenado
+
+~~~js
+var points = JSON.parse(localStorage.getItem("points"));
+
+ctx.beginPath();
+
+var initialPoint = points[0];
+
+ctx.moveTo(initialPoint.x, initialPoint.y);
+
+points.forEach(function (point) {
+	ctx.lineTo(point.x, point.y);
+});
+
+ctx.closePath();
+
+ctx.stroke();
+~~~
 
 ## Parte V - Diseño avanzado
 
