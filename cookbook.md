@@ -789,9 +789,90 @@ ctx.stroke();
 
 ### Controles en _Bootstrap_
 
+_Bootstrap_ es un framework basado en _css_ que se encarga de implementar un diseño responsivo fácilmente a nuestra aplicación web. Para entender _Bootstrap_ visite http://getbootstrap.com/css/. Lo único que tenemos que hacer es agregarle las clases ya construidas a nuestras etiquetas html para que adopten un diseño mejorado. Para hacer práctica esta receta mostraremos como hacer una ventana de acceso a usuarios utilizando _bootstrap_.
+
+Creamos el esqueleto de la aplicación, la cual consiste en el formulario de acceso a usuarios.
+
+> __HTML__ - Esqueleto de una aplicación de acceso a usuarios con _bootstrap_
+
+~~~html
+<!-- Menú de navegación -->
+  <nav class="navbar navbar-default">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#" class="active">Inicio</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Acerca de</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="txt_usuario">Usuario:</label>
+        <input class="form-control" id="txt_usuario" type="text" placeholder="Usuario" />
+      </div>
+      <div class="form-group">
+        <label for="txt_clave">Contraseña:</label>
+        <input class="form-control" id="txt_clave" type="password" placeholder="Contraseña" />
+      </div>
+      <button class="btn btn-primary pull-right">Iniciar Sesión</button>
+    </form>
+  </div>
+~~~
+
+Como se puede observar sólo debemos colocar los elementos de forma organizada y en cada panel y control agregar las clases necesarias.
+
 ### Implementar el _Material Design_
 
 ### Introducción a _JQuery Mobile_
+
+_JQuery mobile_ es una librería basada en _JQuery_ para integrar aplicaciones web en diversos dispositivos móviles, tabletas y de escritorio haciendo que el diseño se adapte. Puede encontrar más información en http://demos.jquerymobile.com/1.4.5/
+
+> __HTML__ - Esqueleto de una página de acceso a usuario con _jquery mobile_
+
+~~~html
+<div id="login" data-role="page">
+	<div data-role="header">
+		<h1>Iniciar Sesión</h1>
+		<a href="#" class="ui-btn-right">Registrarse</a>
+	</div>
+	
+	<div role="main" class="ui-content">
+		<div class="ui-field-contain">
+			<label for="username">Usuario:</label>
+			<input name="username" id="username" type="text" placeholder="Usuario" data-clear-btn="true" />
+		</div>
+		
+		<div class="ui-field-contain">
+			<label for="password">Contraseña:</label>
+			<input name="password" id="password" type="password" placeholder="Contraseña" data-clear-btn="true" />
+		</div>
+	
+		<div class="ui-field-contain">
+			<a href="#home" data-role="button">ingresar</a>
+		</div>
+	</div>
+</div>
+~~~
+
+> __HTML__ - Esqueleto de una página de con información del usuario con _jquery mobile_
+
+~~~html
+<div id="home" data-role="page">
+	<div id="user-info" data-role="panel" data-display="push">
+		<div class="ui-panel-inner" style="text-align: center;">
+			<img src="https://avatars3.githubusercontent.com/u/6743118?v=3&s=460" style="width: 150px; height: 150px; border-radius: 50%;" />
+		</div>
+	</div>
+      
+	<div data-role="header" style="overflow:hidden;">
+		<h1>Inicio</h1>
+		<a href="#login" data-icon="carat-l" class="ui-btn-left">atrás</a>
+		<a href="#user-info" class="ui-btn-right">User</a>
+	</div>
+</div>
+~~~
 
 ### Introducción a _React_
 
