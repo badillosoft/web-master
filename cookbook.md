@@ -40,12 +40,10 @@ Por Alan Badillo Salas [ badillo.soft@hotmail.com | https://twitter.com/badillos
 1. Controles en _Bootstrap_
 2. Implementar el _Material Design_
 3. Introducción a _JQuery Mobile_
-4. Introducción a _React_
-5. Introducción a _Angular JS_
 
 ## Parte I - Introducción al desarrollo web
 
-## 1. Crear una aplicación web _HTML 5_
+### Crear una aplicación web _HTML 5_
 
 Para construir una aplicación _HTML 5_ usaremos la etiqueta `<!DOCTYPE html>` al principio de nuestro archivo _html_, incluiremos las nuevas etiquetas implementadas y evitaremos las obsoletas como se puede ver en http://www.w3schools.com/html/html5_intro.asp
 
@@ -69,7 +67,7 @@ Para construir una aplicación _HTML 5_ usaremos la etiqueta `<!DOCTYPE html>` a
 </html> 
 ~~~
 
-## 2. Modificar el diseño de una aplicación web utilizando _CSS_
+### Modificar el diseño de una aplicación web utilizando _CSS_
 
 Podemos modificar el diseño de una aplicación web utilizando _css_. Las definiciones deben ponerse dentro de `<head>` medinte las etiquetas `<style>` si queremos un estilo local o `<link>` si queremos un estilo contenido en un archivo. Los estilos se aplicarán conforme se vayan cargando y la prioridad será: primero los estilos definidos en el elemento mediante el atributo `style`, ejemplo `<div style="background-color: red; color: blue;">`, luego los contenidos en la etiqueta `<style>`, ejemplo `<style>div { background-color: red; color: blue; }` y finalmente los contenidos en el archivo, ejemplo `<link rel="stylesheet" type="text/css" href="mystyle.css">`.
 
@@ -119,7 +117,7 @@ Podemos modificar el diseño de una aplicación web utilizando _css_. Las defini
 </div>
 ~~~
 
-## 3. Modificar la funcionalidad de una aplicación web utilizando _JavaScript_
+### Modificar la funcionalidad de una aplicación web utilizando _JavaScript_
 
 Al igual que con _css_ podemos incluir nuestro código dentro del archivo _html_ mediante el cuerpo de la etiqueta `<script>` o dentro de un archivo con extensión `.js` y `<script src="archivo.js">`.
 
@@ -197,7 +195,7 @@ function saludar() {
 }
 ~~~
 
-## 4. Mostrar un menú de alerta personalizado
+### Mostrar un menú de alerta personalizado
 
 Para crear un mensaje de alerta utilizaremos _css_ y algunas etiquetas que contengan los datos:
 
@@ -279,7 +277,7 @@ setTimeout(function () {
 }, 1000);
 ~~~
 
-## 5. Consumir un servicio web en _json_
+### Consumir un servicio web en _json_
 
 Para consumir un servicio web en _json_ es necesario comprobar que este funcionando correctamente, por ejemplo, pruebe la _api_ libre de https://randomuser.me/. Una vez que la url funciona y nos devuelve objetos _json_ la integramos mediante jquery:
 
@@ -873,7 +871,3 @@ _JQuery mobile_ es una librería basada en _JQuery_ para integrar aplicaciones w
 	</div>
 </div>
 ~~~
-
-### Introducción a _React_
-
-### Introducción a _Angular JS_
