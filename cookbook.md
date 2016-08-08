@@ -581,9 +581,135 @@ marker.setMap(map);
 
 ## Parte IV - Canvas
 
+Usaremos la siguiente plantilla básica para utilizar canvas
+
+> __JS__ - Plantilla para usar canvas
+
+~~~js
+var canvas = null, ctx = null;
+    
+// Cargamos los eventos `load` y `resize` de `window`
+window.addEventListener("load", initialize);
+window.addEventListener("resize", resize);
+
+// Inicializa el objeto canvas y el contexto, invoca los loops para actualizar y dibujar
+function initialize () {
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext("2d");
+
+	resize();
+	update();
+	draw();
+};
+
+// Si la ventana es redimensionada mantiene la misma resolución
+function resize() {
+	var aspect = window.innerWidth / window.innerHeight, resolution = 300;
+	canvas.width = resolution;
+	canvas.height = resolution / aspect;
+}
+
+// TODO: Colocar variables de control aquí
+// Ejemplo: var x = 0;
+
+// Actualizamos las variables de control
+function update() {
+	// TODO: Completar lógica aquí
+	
+	// Creamos el loop para actualizar cada 60 fps aproximadamente
+	requestAnimationFrame(update);
+}
+
+// Dibujamos objetos usando o no las variables de control
+function draw() {
+	// Borramos toda la pantalla
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	// TODO: Dibujar aquí
+
+	// Creamos el loop para dibujar cada 60 fps aproximadamente
+	requestAnimationFrame(draw);
+}
+~~~
+
 ### Dibujar figuras básicas
 
+Las figuras básicas se pueden dibujar mediante las funciones ya programadas del contexto `ctx` como `strokeRect` para un rectángulo pintado en el borde, `fillRect` para un rectángulo relleno, cada figura cuenta con un conjunto de parámetros como `x`, `y`, `w`, `h`, `r`, `angle`, ..., los cuales dependen del tipo de figura.
+
+Podemos cambiar el color de contorno o de relleno mediante `ctx.strokeStyle = color` y `ctx.fillStyle = color` donde `color` puede ser un color nombrado, un hexadecimal de 3 valores o de 6, ejemplo `#F00` o `FF0000`, un _rgb_ como `rgb(255, 0, 0)` o un _rgba_ como `rgba(255, 0, 0, 0.5)`, véase http://www.w3schools.com/css/css_colors.asp.
+
+Para aplicar un dibujado necesitamos invocar `ctx.stroke()` y/o `ctx.fill()`, generalmente hacemos esto cuando no usamos `strokeShape` o `fillShape`, ejemplo, `ctx.rect(x, y, w, h)`.
+
+> __JS__ - Dibujar un rectángulo relleno en x = 100, y = 200, w = 20, h = 30
+
+~~~js
+ctx.fillStyle = "red";
+ctx.fillRect(100, 200, 20, 30);
+~~~
+
+También podemos usar un gradiente como color de relleno, especificando el punto de partida y el punto de fin usando `createLinearGradient`, revise http://www.w3schools.com/html/html5_canvas.asp para más profundidad en el concepto.
+
+> __JS__ - Aplicar un gradiente lineal sobre un circulo
+
+~~~js
+// Creamos el gradiente del punto (0, 0) al (100, 100) que es una diagonal
+var grd = ctx.createLinearGradient(0, 0, 100, 100);
+
+grd.addColorStop(0, "red");
+grd.addColorStop(0.25, "#00f");
+grd.addColorStop(0.5, "#f8a878");
+grd.addColorStop(0.75, "rgb(255, 84, 84)");
+grd.addColorStop(1, "rgba(127, 127, 127, 0.5)");
+
+ctx.fillStyle = grd;
+
+ctx.beginPath();
+// Dibujamos un circulo en el punto (10, 10) de radio 20
+// 0 - es el ángulo inicial del arco
+// 2 * Math.PI - es el ángulo final del arco, que es equivalente a 360º pero en redianes
+ctx.arc(10, 10, 20, 0, 2 * Math.PI);
+
+ctx.closePath();
+
+ctx.fill();
+~~~
+
 ### Animar una figura
+
+Para animar una figura utilizaremos variables de control para determinar las posiciones de las figuras y actualizarlas en el tiempo
+
+> __JS__ - Animar un triángulo
+
+~~~js
+var x = 0, y = 0;
+
+function update() {
+	x += 1;
+	y += 1;
+	...
+}
+
+function draw() {
+	...
+	
+	ctx.beginPath();
+	// Nos movemos al punto (x, y) sin dibujar nada
+	ctx.moveTo(x, y);
+	// Nos movemos al punto (x + 10, y) trazando una linea
+	ctx.lineTo(x + 10, y);
+	// Nos movemos al punto (x + 5, y + 10) trazando una linea
+	ctx.lineTo(x + 5, y + 10);
+	// Al cerrar el path se crea una linea que va del último punto (x + 5, y + 10) al inicial (x, y)
+	ctx.closePath();
+	
+	// Rellenamos el triángulo
+	ctx.fill();
+	// Pintamos el borde del triángulo
+	ctx.stroke();
+	
+	...
+}
+~~~
 
 ### Dibujar una función
 
