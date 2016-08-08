@@ -464,3 +464,27 @@ function sincronizar() {
 ### Añadir un pin al mapa y guardarlo
 
 ### Ir a un pin guardado
+
+## Parte IV - Canvas
+
+### Dibujar figuras básicas
+
+### Animar una figura
+
+### Dibujar una función
+
+### Almacenar un dibujo
+
+### Dibujar un dibujo almacenado
+
+## Parte V - Diseño avanzado
+
+### Controles en _Bootstrap_
+
+### Implementar el _Material Design_
+
+### Introducción a _JQuery Mobile_
+
+### Introducción a _React_
+
+### Introducción a _Angular JS_
